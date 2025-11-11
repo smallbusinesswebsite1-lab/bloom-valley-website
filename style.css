@@ -58,6 +58,22 @@ nav a.active {
   gap: 20px;
   padding: 1rem;
 }
+/* Image Styling */
+.item img {
+  width: 100%;          /* Makes image fill the width of the item card */
+  height: 150px;        /* Fixed height for all images */
+  object-fit: cover;    /* Ensures image scales/crops nicely without distortion */
+  border-radius: 8px;   /* Rounds image corners to match card style */
+  margin-bottom: 0.5rem;
+}
+
+/* Optional: Hero image sizing (already background, so leave as-is) */
+.hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 .item {
   background: #fff;
@@ -108,6 +124,7 @@ footer {
     align-items: center;
   }
 }
+
 
 
 

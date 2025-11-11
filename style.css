@@ -28,7 +28,7 @@ nav a.active {
   text-align: center;
   padding: 2rem;
   background: url("https://via.placeholder.com/800x300") center/cover no-repeat;
-  color: white;
+  color: grey;
 }
 
 .hero button {
@@ -108,4 +108,5 @@ footer {
     align-items: center;
   }
 }
+
 

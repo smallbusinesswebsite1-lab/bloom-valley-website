@@ -50,6 +50,16 @@ nav a.active {
   padding: 0.5rem;
   width: 250px;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
 
 .gallery-grid {
   display: flex;
@@ -124,6 +134,7 @@ footer {
     align-items: center;
   }
 }
+
 
 
 

@@ -1,14 +1,15 @@
+/* Base Styles */
 body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
   background-color: #f5fff5;
-  color: grey;
+  color: #333;
   line-height: 1.6;
 }
 
 header {
   background-color: #6bbf59;
-  color: white;
+  color: grey;
   padding: 1rem;
   text-align: center;
 }
@@ -24,11 +25,27 @@ nav a.active {
   text-decoration: underline;
 }
 
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 2rem;
   background: url("https://via.placeholder.com/800x300") center/cover no-repeat;
-  color: grey;
+  color: white;
 }
 
 .hero button {
@@ -41,6 +58,7 @@ nav a.active {
   cursor: pointer;
 }
 
+/* Subscribe Section */
 .subscribe {
   text-align: center;
   padding: 2rem;
@@ -50,39 +68,14 @@ nav a.active {
   padding: 0.5rem;
   width: 250px;
 }
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
 
+/* Gallery */
 .gallery-grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   padding: 1rem;
-}
-/* Image Styling */
-.item img {
-  width: 100%;          /* Makes image fill the width of the item card */
-  height: 150px;        /* Fixed height for all images */
-  object-fit: cover;    /* Ensures image scales/crops nicely without distortion */
-  border-radius: 8px;   /* Rounds image corners to match card style */
-  margin-bottom: 0.5rem;
-}
-
-/* Optional: Hero image sizing (already background, so leave as-is) */
-.hero img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 .item {
@@ -94,13 +87,22 @@ nav a.active {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Cart Section */
 .cart {
   text-align: center;
   margin: 2rem;
 }
 
+/* Forms */
 .contact form,
-.custom form {
+.custom form,
+.subscribe form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -109,11 +111,39 @@ nav a.active {
 
 form input,
 form textarea,
-form select {
+form select,
+form button {
   margin: 0.5rem 0;
   padding: 0.5rem;
 }
 
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #6bbf59;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #5aa14a;
+}
+
+/* Visually Hidden Class for Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Footer */
 footer {
   background-color: #6bbf59;
   color: white;
@@ -122,8 +152,15 @@ footer {
   margin-top: 3rem;
 }
 
+/* Custom Form Result */
+#customResult {
+  margin-top: 1rem;
+  text-align: center;
+}
+
 /* Responsive Design */
 @media (max-width: 700px) {
+
   nav {
     display: flex;
     flex-direction: column;
@@ -133,11 +170,35 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+
+  .item {
+    width: 90%; /* Full width on mobile */
+  }
+
+  .cart {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .cart button {
+    width: 48%;
+    margin: 0.5rem 1%;
+  }
+
+  .contact form,
+  .custom form,
+  .subscribe form {
+    width: 90%;
+  }
+
+  .contact button,
+  .custom button,
+  .subscribe button {
+    width: 100%;
+  }
+
+  #customResult {
+    width: 90%;
+    margin: 1rem auto;
+  }
 }
-
-
-
-
-
-
-

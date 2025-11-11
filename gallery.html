@@ -8,9 +8,12 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
   <header>
     <h1>Bloom Valley Nursery</h1>
-    <nav>
+    <nav aria-label="Main Navigation">
       <a href="index.html">Home</a>
       <a href="gallery.html" class="active">Gallery</a>
       <a href="about.html">About</a>
@@ -18,27 +21,28 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <h2>Our Green Collection</h2>
+
     <div class="gallery-grid">
       <div class="item">
         <img src="./images/aloe-vera.jpg" alt="Aloe Vera" />
         <p>Aloe Vera - $10</p>
-        <button onclick="addToCart('Aloe Vera', 10)">Add to Cart</button>
+        <button onclick="addToCart('Aloe Vera', 10)" aria-label="Add Aloe Vera to cart">Add to Cart</button>
       </div>
       <div class="item">
         <img src="./images/snake-plant.jpg" alt="Snake Plant" />
         <p>Snake Plant - $15</p>
-        <button onclick="addToCart('Snake Plant', 15)">Add to Cart</button>
+        <button onclick="addToCart('Snake Plant', 15)" aria-label="Add Snake Plant to cart">Add to Cart</button>
       </div>
       <div class="item">
         <img src="./images/peace-lilly.jpg" alt="Peace Lily" />
         <p>Peace Lily - $12</p>
-        <button onclick="addToCart('Peace Lily', 12)">Add to Cart</button>
+        <button onclick="addToCart('Peace Lily', 12)" aria-label="Add Peace Lily to cart">Add to Cart</button>
       </div>
     </div>
 
-    <section class="cart">
+    <section class="cart" aria-live="polite">
       <h3>Your Cart</h3>
       <ul id="cartList"></ul>
       <p>Total: $<span id="cartTotal">0</span></p>
@@ -52,5 +56,3 @@
   </footer>
 </body>
 </html>
-
-

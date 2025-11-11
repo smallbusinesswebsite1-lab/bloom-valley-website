@@ -1,0 +1,85 @@
+// ----- Subscribe Feature -----
+document.addEventListener("DOMContentLoaded", () => {
+  const subForm = document.getElementById("subscribeForm");
+  if (subForm) {
+    subForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const email = document.getElementById("emailInput").value.trim();
+      if (email) {
+        localStorage.setItem("subscribedEmail", email);
+        document.getElementById("subscribeMsg").innerText = "Subscribed successfully!";
+        subForm.reset();
+      }
+    });
+  }
+
+  // ----- Shopping Cart -----
+  if (sessionStorage.getItem("cart")) renderCart();
+
+  // ----- Contact Form -----
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      if (name && email && message) {
+        localStorage.setItem("contactInfo", JSON.stringify({ name, email, message }));
+        document.getElementById("contactMsg").innerText = "Message saved locally!";
+        contactForm.reset();
+      }
+    });
+  }
+
+  // ----- Custom Page -----
+  const customForm = document.getElementById("customForm");
+  if (customForm) {
+    customForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const theme = document.getElementById("theme").value;
+      const result = document.getElementById("customResult");
+      if (theme) {
+        result.innerHTML = `<p>Your ${theme} plant package has been created!</p>`;
+      }
+    });
+  }
+});
+
+// ----- Cart Functions -----
+function addToCart(name, price) {
+  let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  cart.push({ name, price });
+  sessionStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart() {
+  const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const list = document.getElementById("cartList");
+  const totalElem = document.getElementById("cartTotal");
+  if (!list) return;
+  list.innerHTML = "";
+  let total = 0;
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price}`;
+    list.appendChild(li);
+    total += item.price;
+  });
+  totalElem.textContent = total.toFixed(2);
+}
+
+function clearCart() {
+  sessionStorage.removeItem("cart");
+  renderCart();
+  alert("Cart cleared!");
+}
+
+function processOrder() {
+  const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  if (cart.length === 0) return alert("Your cart is empty.");
+  alert("Order processed successfully!");
+  sessionStorage.removeItem("cart");
+  renderCart();
+}

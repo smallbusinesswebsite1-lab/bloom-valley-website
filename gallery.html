@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloom Valley Nursery | Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Bloom Valley Nursery</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="custom.html">Custom</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Green Collection</h2>
+    <div class="gallery-grid">
+      <div class="item">
+        <img src="https://via.placeholder.com/200" alt="Aloe Vera" />
+        <p>Aloe Vera - $10</p>
+        <button onclick="addToCart('Aloe Vera', 10)">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="https://via.placeholder.com/200" alt="Snake Plant" />
+        <p>Snake Plant - $15</p>
+        <button onclick="addToCart('Snake Plant', 15)">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="https://via.placeholder.com/200" alt="Peace Lily" />
+        <p>Peace Lily - $12</p>
+        <button onclick="addToCart('Peace Lily', 12)">Add to Cart</button>
+      </div>
+    </div>
+
+    <section class="cart">
+      <h3>Your Cart</h3>
+      <ul id="cartList"></ul>
+      <p>Total: $<span id="cartTotal">0</span></p>
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="processOrder()">Process Order</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Bloom Valley Nursery</p>
+  </footer>
+</body>
+</html>

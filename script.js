@@ -1,15 +1,24 @@
-// ----- Subscribe Feature -----
 document.addEventListener("DOMContentLoaded", () => {
+
+  // ----- Subscribe Feature -----
   const subForm = document.getElementById("subscribeForm");
   if (subForm) {
     subForm.addEventListener("submit", e => {
       e.preventDefault();
       const email = document.getElementById("emailInput").value.trim();
-      if (email) {
-        localStorage.setItem("subscribedEmail", email);
-        document.getElementById("subscribeMsg").innerText = "Subscribed successfully!";
-        subForm.reset();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.(com|net|org|edu|gov|co|io)$/i;
+      const msgElem = document.getElementById("subscribeMsg");
+
+      if (!emailPattern.test(email)) {
+        msgElem.innerText = "Please enter a valid email address.";
+        msgElem.setAttribute("role", "alert");
+        return;
       }
+
+      localStorage.setItem("subscribedEmail", email);
+      msgElem.innerText = "Subscribed successfully!";
+      msgElem.setAttribute("role", "alert");
+      subForm.reset();
     });
   }
 
@@ -21,14 +30,28 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", e => {
       e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-      if (name && email && message) {
-        localStorage.setItem("contactInfo", JSON.stringify({ name, email, message }));
-        document.getElementById("contactMsg").innerText = "Message saved locally!";
-        contactForm.reset();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const msgElem = document.getElementById("contactMsg");
+      const emailPattern = /^[^\s@]+@[^\s@]+\.(com|net|org|edu|gov|co|io)$/i;
+
+
+      if (!name || !email || !message) {
+        msgElem.innerText = "All fields are required.";
+        msgElem.setAttribute("role", "alert");
+        return;
       }
+      if (!emailPattern.test(email)) {
+        msgElem.innerText = "Please enter a valid email address.";
+        msgElem.setAttribute("role", "alert");
+        return;
+      }
+
+      localStorage.setItem("contactInfo", JSON.stringify({ name, email, message }));
+      msgElem.innerText = "Message saved locally!";
+      msgElem.setAttribute("role", "alert");
+      contactForm.reset();
     });
   }
 
@@ -39,9 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const theme = document.getElementById("theme").value;
       const result = document.getElementById("customResult");
-      if (theme) {
-        result.innerHTML = `<p>Your ${theme} plant package has been created!</p>`;
+
+      if (!theme) {
+        result.innerText = "Please select a theme before submitting.";
+        result.setAttribute("role", "status");
+        return;
       }
+
+      result.innerHTML = `<p>Your ${theme} plant package has been created!</p>`;
+      result.setAttribute("role", "status");
     });
   }
 });

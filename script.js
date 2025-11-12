@@ -55,40 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ----- Custom Page -----
- // Custom Order Form
-const customForm = document.getElementById("customForm");
-if (customForm) {
-  customForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const plantType = document.getElementById("plantType").value;
-    const potStyle = document.getElementById("potStyle").value;
-    const size = document.getElementById("size").value;
-    const resultDiv = document.getElementById("customResult");
-
-    if (!plantType || !potStyle || !size) {
-      resultDiv.textContent = "Please select all options before generating your plan.";
-      resultDiv.setAttribute("role", "alert");
-      return;
-    }
-
-    const summary = `
-      <h3>Your Custom Plant Package:</h3>
-      <ul>
-        <li><strong>Plant Type:</strong> ${plantType}</li>
-        <li><strong>Pot Style:</strong> ${potStyle}</li>
-        <li><strong>Size:</strong> ${size}</li>
-      </ul>
-      <p>We’ll prepare your personalized collection soon!</p>
-    `;
-
-    resultDiv.innerHTML = summary;
-    resultDiv.setAttribute("role", "status");
-  });
-}
-
-
+  
 // ----- Cart Functions -----
 function addToCart(name, price) {
   let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
@@ -126,4 +93,40 @@ function processOrder() {
   sessionStorage.removeItem("cart");
   renderCart();
 }
+
+// ----- Custom Page -----
+ // Custom Order Form
+const customForm = document.getElementById("customForm");
+if (customForm) {
+  customForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const plantType = document.getElementById("plantType").value;
+    const potStyle = document.getElementById("potStyle").value;
+    const size = document.getElementById("size").value;
+    const resultDiv = document.getElementById("customResult");
+
+    if (!plantType || !potStyle || !size) {
+      resultDiv.textContent = "Please select all options before generating your plan.";
+      resultDiv.setAttribute("role", "alert");
+      return;
+    }
+
+    const summary = `
+      <h3>Your Custom Plant Package:</h3>
+      <ul>
+        <li><strong>Plant Type:</strong> ${plantType}</li>
+        <li><strong>Pot Style:</strong> ${potStyle}</li>
+        <li><strong>Size:</strong> ${size}</li>
+      </ul>
+      <p>We’ll prepare your personalized collection soon!</p>
+    `;
+
+    resultDiv.innerHTML = summary;
+    resultDiv.setAttribute("role", "status");
+  });
+}
+
+
+
 

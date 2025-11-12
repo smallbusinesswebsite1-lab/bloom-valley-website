@@ -24,17 +24,35 @@
       <p>Need something special? Choose a theme and we’ll create a custom plant collection just for you.</p>
 
       <form id="customForm">
-        <label for="theme">Select Theme:</label>
-        <select id="theme" required>
+        <label for="plantType">Select Plant Type:</label>
+        <select id="plantType" required>
           <option value="">Choose...</option>
-          <option value="Indoor">Indoor Plants</option>
-          <option value="Outdoor">Outdoor Garden</option>
-          <option value="Succulents">Succulent Mix</option>
+          <option value="Indoor">Indoor Plant</option>
+          <option value="Outdoor">Outdoor Plant</option>
+          <option value="Succulent">Succulent</option>
         </select>
-        <button type="submit">Create Package</button>
+      
+        <label for="potStyle">Select Pot Style:</label>
+        <select id="potStyle" required>
+          <option value="">Choose...</option>
+          <option value="Ceramic">Ceramic Pot</option>
+          <option value="Clay">Clay Pot</option>
+          <option value="Plastic">Plastic Pot</option>
+        </select>
+      
+        <label for="size">Select Size:</label>
+        <select id="size" required>
+          <option value="">Choose...</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      
+        <button type="submit">Generate Custom Plan</button>
       </form>
+      
+      <div id="customResult" aria-live="polite"></div>
 
-      <div id="customResult"></div>
     </section>
   </main>
 
@@ -43,3 +61,4 @@
   </footer>
 </body>
 </html>
+

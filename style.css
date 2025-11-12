@@ -9,7 +9,7 @@ body {
 
 header {
   background-color: #6bbf59;
-  color: grey;
+  color: white;
   padding: 1rem;
   text-align: center;
 }
@@ -45,7 +45,7 @@ nav a.active {
   text-align: center;
   padding: 2rem;
   background: url("https://via.placeholder.com/800x300") center/cover no-repeat;
-  color: white;
+  color: grey;
 }
 
 .hero button {
@@ -202,3 +202,4 @@ footer {
     margin: 1rem auto;
   }
 }
+

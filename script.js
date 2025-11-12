@@ -56,24 +56,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ----- Custom Page -----
-  const customForm = document.getElementById("customForm");
-  if (customForm) {
-    customForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const theme = document.getElementById("theme").value;
-      const result = document.getElementById("customResult");
+ // Custom Order Form
+const customForm = document.getElementById("customForm");
+if (customForm) {
+  customForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      if (!theme) {
-        result.innerText = "Please select a theme before submitting.";
-        result.setAttribute("role", "status");
-        return;
-      }
+    const plantType = document.getElementById("plantType").value;
+    const potStyle = document.getElementById("potStyle").value;
+    const size = document.getElementById("size").value;
+    const resultDiv = document.getElementById("customResult");
 
-      result.innerHTML = `<p>Your ${theme} plant package has been created!</p>`;
-      result.setAttribute("role", "status");
-    });
-  }
-});
+    if (!plantType || !potStyle || !size) {
+      resultDiv.textContent = "Please select all options before generating your plan.";
+      resultDiv.setAttribute("role", "alert");
+      return;
+    }
+
+    const summary = `
+      <h3>Your Custom Plant Package:</h3>
+      <ul>
+        <li><strong>Plant Type:</strong> ${plantType}</li>
+        <li><strong>Pot Style:</strong> ${potStyle}</li>
+        <li><strong>Size:</strong> ${size}</li>
+      </ul>
+      <p>We’ll prepare your personalized collection soon!</p>
+    `;
+
+    resultDiv.innerHTML = summary;
+    resultDiv.setAttribute("role", "status");
+  });
+}
+
 
 // ----- Cart Functions -----
 function addToCart(name, price) {
@@ -112,3 +126,4 @@ function processOrder() {
   sessionStorage.removeItem("cart");
   renderCart();
 }
+

@@ -45,7 +45,7 @@ nav a.active {
   text-align: center;
   padding: 2rem;
   background: url("https://via.placeholder.com/800x300") center/cover no-repeat;
-  color: grey;
+  color: black;
 }
 
 .hero button {
@@ -202,4 +202,5 @@ footer {
     margin: 1rem auto;
   }
 }
+
 
